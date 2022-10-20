@@ -1,6 +1,6 @@
 const main = async () => {
   const domainContractFactory = await hre.ethers.getContractFactory("Domains");
-  const domainContract = await domainContractFactory.deploy("poly");
+  const domainContract = await domainContractFactory.deploy("dev");
   await domainContract.deployed();
 
   console.log("Contract deployed to:", domainContract.address);
@@ -10,11 +10,11 @@ const main = async () => {
     value: hre.ethers.utils.parseEther("0.1"),
   });
   await txn.wait();
-  console.log("Minted domain aella.poly");
+  console.log("Minted domain aella.dev");
 
   txn = await domainContract.setRecord("aella", "twitter.com/AellaCodes");
   await txn.wait();
-  console.log("Set record for aella.poly");
+  console.log("Set record for aella.dev");
 
   const address = await domainContract.getAddress("aella");
   console.log("Owner of domain aella:", address);
